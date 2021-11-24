@@ -54,19 +54,20 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.insertStudent(email, name, password);
         String uuid = UUID.randomUUID().toString();
         String content = "<html><body>\n" + "<a href=\"http://127.0.0.1:8080/student/activate?email=" + email + "&code=" + uuid + "\">激活账号</a>\n" + "</body></html>";
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+       /* MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
         try {
-            message.setFrom("602485193@qq.com");
+            message.setFrom("614025432@qq.com");
             message.setTo(email);
             message.setSubject("TrainingCollege注册验证码");
             message.setText(content);
             javaMailSender.send(mimeMessage);
-            return verificationMapper.insert(email, uuid);
         } catch (MessagingException e) {
             e.printStackTrace();
             return 0;
-        }
+        }*/
+        return verificationMapper.insert(email, uuid);
+
     }
 
     @Override
